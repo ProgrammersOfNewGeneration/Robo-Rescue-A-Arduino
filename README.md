@@ -2,6 +2,7 @@
 
 
 # Como usar Bitbucket:
+[Pode ser meio zuado de usar isso, mas de vdd, pode ajudar mt. Ele irá controlar todo nosso código, se dar algum problema sempre seŕa possível recuperar facilmente. Se duas pessoas editarem um memso codigo ao mesmo tempo, nem precisam trocar ideias, o git da conta de gerenciar e ver o que cada um fez e mesclar o código. O esforço vale a pena]
 
 Baixe e instale o Git here: http://git-scm.com/
 
@@ -9,12 +10,38 @@ Baixe e instale o Git here: http://git-scm.com/
 Abra o Prompt de comando do Git(sei lá como é o nome no Win, linux é só digitar git)
 Vá para a pasta que quer salvar o prj
 digite:
+    
     git clone https://SeuNomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
 
-    não esqueça de colocar seu nome de usuário do bitbucket no comando acima. Ele irá pedir senha, confirme para baixar.
+não esqueça de colocar seu nome de usuário do bitbucket no comando acima. Ele irá pedir senha, confirme para baixar.
 
 Ok, o código esta no seu PC.
 
+*** Para manter as configurações do repositório remoto, digite:
+
+    
+    git remote add origin https://NomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
+
+** [Importante!!] Atualizar seus fontes
+Sempre que você for fazer algo no seu projeto, atualize seus fontes para não pegar código antigo sem perceber. Para isso, sempre antes de iniciar uma modificação digite:
+
+    git pull origin master
+
+Esse comando irá atualizar seus fontes.
+
+** [Tbm importante!!] Atualizar fontes servidor
+Sempre que terminar alguma modificação(n faça isso a cada save, espere grandes modificações, ou coisas importantes), você precisa enviar o que foi modificado para o server, então digite:
+
+    git add .
+
+Irá adicionar todos os arquivos da sua pasta para o servidor
+
+    git commit -am "Mensagem explicando o que voce fez"
+
+    git push origin master
+
+O commit salva suas mudanças e coloca uma msg informando o q vc fez. Tente sempre explicar com poucas palavras e claramente o q vc fez!!
+O git push faz o upload dos fontes.
 
 
 ## 1. Tema do Projeto:
