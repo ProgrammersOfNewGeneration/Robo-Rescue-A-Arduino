@@ -17,19 +17,19 @@ não esqueça de colocar seu nome de usuário do bitbucket no comando acima. Ele
 
 Ok, o código esta no seu PC.
 
-*** Para manter as configurações do repositório remoto, digite:
+### Para manter as configurações do repositório remoto, digite:
 
     
     git remote add origin https://NomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
 
-** [Importante!!] Atualizar seus fontes
+## [Importante!!] Atualizar seus fontes
 Sempre que você for fazer algo no seu projeto, atualize seus fontes para não pegar código antigo sem perceber. Para isso, sempre antes de iniciar uma modificação digite:
 
     git pull origin master
 
 Esse comando irá atualizar seus fontes.
 
-** [Tbm importante!!] Atualizar fontes servidor
+## [Tbm importante!!] Atualizar fontes servidor
 Sempre que terminar alguma modificação(n faça isso a cada save, espere grandes modificações, ou coisas importantes), você precisa enviar o que foi modificado para o server, então digite:
 
     git add .
@@ -42,6 +42,52 @@ Irá adicionar todos os arquivos da sua pasta para o servidor
 
 O commit salva suas mudanças e coloca uma msg informando o q vc fez. Tente sempre explicar com poucas palavras e claramente o q vc fez!!
 O git push faz o upload dos fontes.
+
+
+
+
+
+
+
+
+
+     .               ,.
+                  T."-._..---.._,-"/|
+                  l|"-.  _.v._   (" |
+                  [l /.'_ \; _~"-.`-t
+                  Y " _(o} _{o)._ ^.|
+                  j  T  ,-<v>-.  T  ]
+                  \  l ( /-^-\ ) !  !
+                   \. \.  "~"  ./  /c-..,__
+                     ^r- .._ .- .-"  `- .  ~"--.
+                      > \.                      \
+                      ]   ^.                     \
+                      3  .  ">            .       Y  -Que projeto sexy
+         ,.__.--._   _j   \ ~   .         ;       |
+        (    ~"-._~"^._\   ^.    ^._      I     . l
+         "-._ ___ ~"-,_7    .Z-._   7"   Y      ;  \        _
+            /"   "~-(r r  _/_--._~-/    /      /,.--^-._   / Y
+            "-._    '"~~~>-._~]>--^---./____,.^~        ^.^  !
+                ~--._    '   Y---.                        \./
+                     ~~--._  l_   )                        \
+                           ~-._~~~---._,____..---           \
+                               ~----"~       \
+                                              \
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 1. Tema do Projeto:
