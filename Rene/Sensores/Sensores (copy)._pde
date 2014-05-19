@@ -1,0 +1,97 @@
+import android.hardware.*;
+import android.content.Context;
+import java.util.*;
+
+SensorManager mSensorManager;
+Sensor mSensor;
+Sensor mAccelerometer, mMagneticField;
+SensorEventListener listenerAccel, listenerMagnet;
+
+void setup() {
+  mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+  mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);//TYPE_ACCELEROMETER or TYPE_GRAVITY
+  listenerAccel = new SensorEventListener() {
+    public void onAccuracyChanged (Sensor sensor, int accuracy) {
+      print(accuracy);
+    }
+    public void onSensorChanged (SensorEvent event) {
+      double angX = Math.atan2(event.values[0], event.values[2]);
+      double angY = Math.atan2(event.values[1], event.values[2]); 
+      //print((int)(angX*180/PI)+"º "+(int)(angY*180/PI)+"º");
+      
+    }
+  };
+  mSensorManager.registerListener(listenerAccel, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+  
+  mMagneticField = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);//TYPE_ACCELEROMETER or TYPE_GRAVITY
+  listenerMagnet = new SensorEventListener() {
+    public void onAccuracyChanged (Sensor sensor, int accuracy) {
+      print(accuracy);
+    }
+    public void onSensorChanged (SensorEvent event) {
+      double angX = Math.atan2(event.values[0], event.values[2]);
+      double angY = Math.atan2(event.values[1], event.values[2]); 
+      //print((int)(angX*180/PI)+"º "+(int)(angY*180/PI)+"º");
+      print(event.values[0]+" "+event.values[1]+" "+event.values[2]);
+    }
+  };
+  print("setup");
+  mSensorManager.registerListener(listenerMagnet, mMagneticField, SensorManager.SENSOR_DELAY_NORMAL);
+  
+  //  mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
+  //  List<Sensor> deviceSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
+  //  if (mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD) != null) {
+  //    print("Success! There's a magnetometer.");
+  //    List<Sensor> gravSensors = mSensorManager.getSensorList(Sensor.TYPE_GRAVITY);
+  //    for (int i=0; i<gravSensors.size(); i++) {
+  //      Sensor mSensor = gravSensors.get(i);
+  //      print(mSensor.getVendor());
+  //      if ((gravSensors.get(i).getVendor().contains("Google Inc.")) &&
+  //        (gravSensors.get(i).getVersion() == 3)) {
+  //        // Use the version 3 gravity sensor.
+  //      }
+  //    }
+  //    if (mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
+  //      Sensor mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+  //      print(mSensor.getVendor());
+  //    }
+  //  }
+  //  else {
+  //    print("Failure! No magnetometer.");
+  //  }
+}
+
+void stop() {
+  mSensorManager.unregisterListener(listenerAccel);
+  print("stop");
+} 
+
+void resume() {
+  print("resume");
+//  print("resume "+listenerAccel+", "+mAccelerometer);
+//  if (listenerAccel == null)
+//    return;  
+//  mSensorManager.registerListener(listenerAccel, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+} 
+
+
+//
+//@Override
+//public final void onSensorChanged(SensorEvent event) {
+//  // The light sensor returns a single value.
+//  // Many sensors return 3 values, one for each axis.
+//  float lux = event.values[0];
+//  // Do something with this sensor value.
+//}
+
+void draw() {
+  
+}
+
+public void onAccuracyChanged(Sensor sensor, int accuracy) {
+}
+
+public void onSensorChanged(SensorEvent event) {
+  print(event.values[0]+" "+event.values[1]+" "+event.values[2]);
+}
+

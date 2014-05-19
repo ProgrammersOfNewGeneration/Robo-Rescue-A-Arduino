@@ -3,7 +3,17 @@
 
 # Como usar Bitbucket:
 
-## Guenta firme, the tuto is coming
+Baixe e instale o Git here: http://git-scm.com/
+
+### Para baixar o fonte faça(somente na primeira vez que for utilizar):
+Abra o Prompt de comando do Git(sei lá como é o nome no Win, linux é só digitar git)
+Vá para a pasta que quer salvar o prj
+digite:
+    git clone https://SeuNomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
+
+    não esqueça de colocar seu nome de usuário do bitbucket no comando acima. Ele irá pedir senha, confirme para baixar.
+
+Ok, o código esta no seu PC.
 
 
 
