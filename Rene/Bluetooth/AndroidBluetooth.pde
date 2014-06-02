@@ -60,7 +60,4 @@ class AndroidBluetooth {
     println("-----------");
   }
   
-  int read(byte[] data) {
-    
-  }
 }
