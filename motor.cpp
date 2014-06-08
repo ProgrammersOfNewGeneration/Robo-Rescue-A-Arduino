@@ -56,36 +56,36 @@ void Motor::irMotor(byte m1_a, byte m1_b, byte m2_a, byte m2_b){
 	digitalWrite(MOTOR2_B, m2_b);
 	/*
 esq-esq-dir-dir
-1-0 = esq tras
-0-1 = esq frente
-1-0 = dir frente
-0-1 = dir tras
+1-0 = esq frente
+0-1 = esq tras
+0-1 = dir frente
+1-0 = dir tras
 */
 
 }
 
 void Motor::irFrente(){
-	irMotor(0, 1, 1, 0);
+	irMotor(1, 0, 0, 1);
 }
 
 void Motor::irDireita(){
-	irMotor(0, 1, 0, 0);
+	irMotor(1, 0, 0, 0);
 }
 
 void Motor::irDireitaForte(){
-	irMotor(0, 1, 0, 1);
-}
-
-void Motor::irEsquerda(){
-	irMotor(0, 0, 1, 0);
-}
-
-void Motor::irEsquerdaForte(){
 	irMotor(1, 0, 1, 0);
 }
 
+void Motor::irEsquerda(){
+	irMotor(0, 0, 0, 1);
+}
+
+void Motor::irEsquerdaForte(){
+	irMotor(0, 1, 0, 1);
+}
+
 void Motor::irRe(){
-	irMotor(1, 0, 0, 1);
+	irMotor(0, 1, 1, 0);
 }
 
 void Motor::irParar(){

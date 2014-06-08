@@ -42,8 +42,8 @@ void Bluetooth::configuraBluetooth(){
     while (btSerial->available()) 
     Serial.write(btSerial->read());
 
-    Serial.println("\nConfigurando para NOME = \"Robo-TCC\"");
-    btSerial->write("AT+NAMERobo-TCC");
+    Serial.println("\nConfigurando para NOME = \"Robo1-TCC\"");
+    btSerial->write("AT+NAMERobo1-TCC");
     delay(1100);
     while (btSerial->available()) 
     Serial.write(btSerial->read());
