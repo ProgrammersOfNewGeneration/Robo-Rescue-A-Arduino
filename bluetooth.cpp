@@ -73,12 +73,26 @@ Bluetooth::Bluetooth(int r, int t){
     configuraBluetooth();
 }
 
-char Bluetooth::Ler(){
+void Bluetooth::read(){
+    int i = 0;
+    char c;
+    char ch[1024];
     if(btSerial->available())
-        return btSerial->read();
-    
+        while(1){
+            c = btSerial->read();
+            ch[i++] = c;
+            if(c == '#')
+              break;
+        }
+    ch[i] = '\0';
+    strcpy(msg, ch);
 }
 
-void Bluetooth::Enviar(char c){
-    btSerial->write(c);
+char *Bluetooth::Ler(){
+    read();
+    return msg;
+}
+
+void Bluetooth::Enviar(char c[]){
+    btSerial->print(c);
 }

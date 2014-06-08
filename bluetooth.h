@@ -10,6 +10,8 @@ private:
     int rxPin = 2;
     int txPin = 3;
     SoftwareSerial *btSerial = new SoftwareSerial(2, 3);
+    char msg[1024];
+    void read();
     
 public:
     int getrxPin();
@@ -19,8 +21,8 @@ public:
     void configuraBluetooth();
     Bluetooth();
     Bluetooth(int r, int t);
-    char Ler();
-    void Enviar(char c);
+    char *Ler();
+    void Enviar(char c[]);
 };
 
 

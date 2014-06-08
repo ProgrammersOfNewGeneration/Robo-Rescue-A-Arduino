@@ -5,19 +5,19 @@
 
 
 
-Ultrassom *u = new Ultrassom();
+// Ultrassom *u = new Ultrassom();
 //Motor *m = new Motor();
-// Bluetooth *blue = new Bluetooth();
+Bluetooth *blue = new Bluetooth();
 
 void setup(){
 	Serial.begin(9600);
-	// blue->configuraBluetooth();
+	blue->configuraBluetooth();
 	// m->irFrente();
 	// m->setVelocidade(90);
 }
 void loop(){
-	Serial.println(u->lerDistancia());
-	delay(500);
+	// Serial.println(u->lerDistancia());
+	// delay(500);
 	// m->irFrente();
 	// delay(1000);
 	// m->irDireita();
@@ -28,10 +28,22 @@ void loop(){
 	// delay(1000);
 	// m->irParar();
 	// delay(1000);
-	// Serial.write(blue->Ler());
-	// delay(500);
+	delay(500);
 
-	// if(Serial.available()){
-	// 	blue->Enviar(Serial.read());
-	// }
+	if(Serial.available()){
+		blue->Enviar("Aron#");
+		Serial.read();
+	}
+	// int i = 0;
+	// char c;
+	// char msg[1024];
+	// if(blue->btSerial->available())
+	// 	while(1){
+	// 		c = blue->btSerial->read();
+	// 		msg[i++] = c;
+	// 		if(c == '#')
+	// 			break;
+	// 	}
+	// msg[i] = '\0';
+	Serial.println(blue->Ler());
 }
