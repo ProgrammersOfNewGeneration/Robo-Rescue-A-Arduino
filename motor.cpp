@@ -2,13 +2,13 @@
 
 
 Motor::Motor(){
-	setVelocidade(60);
+	setVelocidade(100);
 	configuraPinos();
 }
 
 Motor::Motor(byte m1_a, byte m1_b, byte m1_pwm, byte m2_a, byte m2_b, byte m2_pwm){
 	configuraPinos();
-	setVelocidade(60);
+	setVelocidade(100);
 	setPinos(m1_a, m1_b, m1_pwm, m2_a, m2_b, m2_pwm);
 }
 

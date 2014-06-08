@@ -21,7 +21,7 @@ public:
     void configuraBluetooth();
     Bluetooth();
     Bluetooth(int r, int t);
-    char *Ler();
+    String Ler();
     void Enviar(char c[]);
 };
 

@@ -74,23 +74,31 @@ Bluetooth::Bluetooth(int r, int t){
 }
 
 void Bluetooth::read(){
-    int i = 0;
+    // int i = 0;
+    // char c;
+    // char ch[1024];
+    // if(btSerial->available())
+    //     while(1){
+    //         c = btSerial->read();
+    //         ch[i++] = c;
+    //         if(c == '#')
+    //           break;
+    //     }
+    // ch[i] = '\0';
+    // strcpy(msg, ch);
+}
+
+String Bluetooth::Ler(){
     char c;
-    char ch[1024];
+    String retorno = "";
     if(btSerial->available())
         while(1){
             c = btSerial->read();
-            ch[i++] = c;
+            retorno += c;
             if(c == '#')
               break;
         }
-    ch[i] = '\0';
-    strcpy(msg, ch);
-}
-
-char *Bluetooth::Ler(){
-    read();
-    return msg;
+    return retorno;
 }
 
 void Bluetooth::Enviar(char c[]){
