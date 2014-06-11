@@ -28,6 +28,7 @@ public:
 	void irEsquerdaForte();
 	void irRe();
 	void irParar();
+	int Encruzilhada();
 
 };
 

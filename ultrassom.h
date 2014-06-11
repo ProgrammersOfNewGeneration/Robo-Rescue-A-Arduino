@@ -20,6 +20,7 @@ public:
 	int getE_pin();
 	int getM_dist();
 	float lerDistancia();
+	
 
 };
 

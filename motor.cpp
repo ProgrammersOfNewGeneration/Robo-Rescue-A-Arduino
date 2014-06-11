@@ -92,3 +92,12 @@ void Motor::irParar(){
 	irMotor(0, 0, 0, 0);
 }
 
+int Motor::Encruzilhada(){
+	irFrente();
+	delay(30);
+	irDireitaForte();
+	delay(300);
+	irFrente();
+	delay(20);
+	return 1;
+}

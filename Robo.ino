@@ -1,32 +1,56 @@
 #include <SoftwareSerial.h>
+#include <Servo.h>
 #include "bluetooth.h"
 #include "motor.h"
 #include "ultrassom.h"
+#include "obj_servo.h"
 
 
 
 Ultrassom *ult = new Ultrassom();
 Motor *motor = new Motor();
 Bluetooth *blue = new Bluetooth();
+ObjServo *servo = new ObjServo();
 
 void setup(){
 	Serial.begin(9600);
 	blue->configuraBluetooth();
+	motor->setVelocidade(150);
+	servo->configura();
 
-	// m->irFrente();
-	// m->setVelocidade(90);
 }
 
 
 void loop(){
-	delay(20);
-	String msg = blue->Ler();
-	Serial.println(msg);
-	if(msg.length() > 1)
-		lerMsg(msg);
 
-	
+	if(Intervalo20()){
+		String msg = blue->Ler();
+		Serial.println(msg);
+		if(msg.length() > 1)
+			lerMsg(msg);
+	}
+
 }
+
+boolean Intervalo500() {
+  static long time = millis();
+  if ((int)(millis() - time) >= 500) {
+    time = millis();
+    return true;
+  }
+  return false;
+}
+
+
+boolean Intervalo20() {
+  static long time = millis();
+  if ((int)(millis() - time) >= 20) {
+    time = millis();
+    return true;
+  }
+  return false;
+}
+
 
 // void chamarFuncao(int cod, int arg1 = 0, int arg2 = 0);
 void chamarFuncao(int cod, int arg1){
@@ -49,13 +73,29 @@ void chamarFuncao(int cod, int arg1){
 	    case 15: retornarDados(arg1, ult->getE_pin()); break;
 	    case 16: retornarDados(arg1, ult->getM_dist()); break;
 		case 17: 
-			float a = ult->lerDistancia(); 
-			int b = (int)a;
+			// float dist = ult->lerDistancia(); 
+			retornarDados(arg1, (int)ult->lerDistancia());
+		break;  
+		case 18:
+			Serial.print("delay: ");
+			Serial.println(arg1);
+			delay(arg1);
+		break;
+		case 19:
+			Serial.println("ASDASDASDASDADs");
+			retornarDados(arg1, Encruzilhada());
+			break;
 
-
-			retornarDados(arg1, b);
-		break;    
 	}
+}
+
+int Encruzilhada(){
+	motor->irFrente();
+	delay(1000);
+	motor->irDireitaForte();
+	delay(1000);
+	motor->irParar();
+	return 1;
 }
 
 void retornarDados(int id, int valor){
@@ -67,7 +107,8 @@ void retornarDados(int id, int valor){
 	strcat(msg, Val);
 	strcat(msg, "#");
 
-
+	Serial.println(msg);
+	Serial.println("########################3");
 	blue->Enviar(msg);
 }
 
