@@ -3,34 +3,47 @@
 #include "bluetooth.h"
 #include "motor.h"
 #include "ultrassom.h"
-#include "obj_servo.h"
+// #include "obj_servo.h"
 
 
 
 Ultrassom *ult = new Ultrassom();
 Motor *motor = new Motor();
 Bluetooth *blue = new Bluetooth();
-ObjServo *servo = new ObjServo();
+// ObjServo *servo = new ObjServo();
+int Angulo = 90;
+int SERVO_PIN = 4;
 
 void setup(){
 	Serial.begin(9600);
 	blue->configuraBluetooth();
 	motor->setVelocidade(150);
-	servo->configura();
-
+	pinMode(SERVO_PIN, OUTPUT);
+	
+	// servo->configura();
+	// servo->girar(0);
 }
 
 
 void loop(){
+	servo(Angulo);
 
-	if(Intervalo20()){
+	// if(Intervalo20()){
 		String msg = blue->Ler();
-		Serial.println(msg);
+		// Serial.println(msg);
 		if(msg.length() > 1)
 			lerMsg(msg);
-	}
-
+		delay(20);
 }
+
+void servo(int angulo) {
+  if (Intervalo20()) {
+    digitalWrite(SERVO_PIN, HIGH);
+    delayMicroseconds(700+2100/180*angulo);
+    digitalWrite(SERVO_PIN, LOW);
+  }
+}
+
 
 boolean Intervalo500() {
   static long time = millis();
@@ -73,18 +86,21 @@ void chamarFuncao(int cod, int arg1){
 	    case 15: retornarDados(arg1, ult->getE_pin()); break;
 	    case 16: retornarDados(arg1, ult->getM_dist()); break;
 		case 17: 
-			// float dist = ult->lerDistancia(); 
 			retornarDados(arg1, (int)ult->lerDistancia());
 		break;  
 		case 18:
-			Serial.print("delay: ");
+			// Serial.print("delay: ");
 			Serial.println(arg1);
 			delay(arg1);
 		break;
 		case 19:
-			Serial.println("ASDASDASDASDADs");
+			// Serial.println("ASDASDASDASDADs");
 			retornarDados(arg1, Encruzilhada());
-			break;
+		break;
+		// case 20: servo->setPin(arg1); break;
+		// case 21: servo->getPin(); break;
+		case 22: Angulo = arg1; break;
+		case 666: retornarDados(arg1, 666);//funcão ok
 
 	}
 }
@@ -94,7 +110,7 @@ int Encruzilhada(){
 	delay(1000);
 	motor->irDireitaForte();
 	delay(1000);
-	motor->irParar();
+	motor->irFrente();
 	return 1;
 }
 
@@ -107,8 +123,8 @@ void retornarDados(int id, int valor){
 	strcat(msg, Val);
 	strcat(msg, "#");
 
-	Serial.println(msg);
-	Serial.println("########################3");
+	// Serial.println(msg);
+	// Serial.println("########################3");
 	blue->Enviar(msg);
 }
 

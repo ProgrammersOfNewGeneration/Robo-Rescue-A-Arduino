@@ -47,5 +47,7 @@ float Ultrassom::lerDistancia(){
 	delayMicroseconds(10);
 	digitalWrite(TRIGGER_PIN, LOW);
 	long duracao = pulseIn(ECHO_PIN, HIGH);
+	Serial.begin(9600);
+	Serial.println(duracao/29/2);
 	return(duracao/29/2);
 }

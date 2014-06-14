@@ -16,7 +16,7 @@ public:
 	int getPin();
 	void girar(int d);
 	void configura();
-	
+
 };
 
 #endif // OBJ_SERVO_H
