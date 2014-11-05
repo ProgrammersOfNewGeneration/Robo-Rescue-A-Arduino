@@ -2,6 +2,9 @@
 
 ![Rescue A](http://www.pngrobotica.tk/images/png_logo.png)
 
+## Robô Desenvolvido - Timótheo
+![Timótheo](http://www.pngrobotica.tk/images/timoteo.png)
+
 ## 1. Tema do Projeto:
 
 
