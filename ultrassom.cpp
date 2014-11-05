@@ -1,6 +1,9 @@
 #include "ultrassom.h"
 
 Ultrassom::Ultrassom(){
+	TRIGGER_PIN = A5;
+	ECHO_PIN = A4;
+	MAX_DISTANCE = 200;
 	configuraPinos();
 }
 
@@ -47,7 +50,8 @@ float Ultrassom::lerDistancia(){
 	delayMicroseconds(10);
 	digitalWrite(TRIGGER_PIN, LOW);
 	long duracao = pulseIn(ECHO_PIN, HIGH);
-	Serial.begin(9600);
+	// Serial.begin(9600);
+	Serial.print("Dist : ");
 	Serial.println(duracao/29/2);
 	return(duracao/29/2);
 }

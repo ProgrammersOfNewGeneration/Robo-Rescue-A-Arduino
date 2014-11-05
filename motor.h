@@ -5,12 +5,12 @@
 
 class Motor{
 private:
-	byte MOTOR1_A = 6;
-	byte MOTOR1_B = 7;
-	byte MOTOR1_PWM = 5;
-	byte MOTOR2_A = 8;
-	byte MOTOR2_B = 9;
-	byte MOTOR2_PWM = 11;
+	byte MOTOR1_A;
+	byte MOTOR1_B;
+	byte MOTOR1_PWM;
+	byte MOTOR2_A;
+	byte MOTOR2_B;
+	byte MOTOR2_PWM;
 	void configuraPinos();
 	void irMotor(byte m1_a, byte m1_b, byte m2_a, byte m2_b);
 

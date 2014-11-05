@@ -2,6 +2,12 @@
 
 
 Motor::Motor(){
+	MOTOR1_A = 6;
+	MOTOR1_B = 7;
+	MOTOR1_PWM = 5;
+	MOTOR2_A = 8;
+	MOTOR2_B = 9;
+	MOTOR2_PWM = 11;
 	setVelocidade(100);
 	configuraPinos();
 }

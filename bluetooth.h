@@ -7,9 +7,9 @@
 
 class Bluetooth{
 private:
-    int rxPin = 2;
-    int txPin = 3;
-    SoftwareSerial *btSerial = new SoftwareSerial(2, 3);
+    int rxPin;
+    int txPin;
+    SoftwareSerial *btSerial;
     char msg[1024];
     void read();
     

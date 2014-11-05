@@ -5,9 +5,9 @@
 
 class Ultrassom{
 private:
-	int TRIGGER_PIN = A5;
-	int ECHO_PIN = A4;
-	int MAX_DISTANCE = 200;
+	int TRIGGER_PIN;
+	int ECHO_PIN;
+	int MAX_DISTANCE;
 
 public:
 	Ultrassom();

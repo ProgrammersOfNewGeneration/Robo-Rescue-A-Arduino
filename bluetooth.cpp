@@ -64,6 +64,7 @@ void Bluetooth::configuraBluetooth(){
 Bluetooth::Bluetooth(){
     setrxPin(2);
     settxPin(3);
+    btSerial = new SoftwareSerial(2, 3);
     //ConfiguraBluetooth();
 }
 
@@ -94,8 +95,9 @@ String Bluetooth::Ler(){
     if(btSerial->available())
         while(1){
             c = btSerial->read();
-            retorno += c;
-            if(c == '#')
+            if(c == 35 || (c >= 48 && c <= 57) || c == 64)
+                retorno += c;
+            if(c == 35)
               break;
         }
     return retorno;

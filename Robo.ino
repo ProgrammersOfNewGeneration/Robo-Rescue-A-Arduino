@@ -1,11 +1,9 @@
 #include <SoftwareSerial.h>
-#include <Servo.h>
+// #include <Servo.h>
 #include "bluetooth.h"
 #include "motor.h"
 #include "ultrassom.h"
 // #include "obj_servo.h"
-
-
 
 Ultrassom *ult = new Ultrassom();
 Motor *motor = new Motor();
@@ -17,23 +15,20 @@ int SERVO_PIN = 4;
 void setup(){
 	Serial.begin(9600);
 	blue->configuraBluetooth();
-	motor->setVelocidade(150);
+	motor->setVelocidade(180);
 	pinMode(SERVO_PIN, OUTPUT);
-	
-	// servo->configura();
-	// servo->girar(0);
 }
 
-
 void loop(){
-	servo(Angulo);
-
 	// if(Intervalo20()){
 		String msg = blue->Ler();
 		// Serial.println(msg);
 		if(msg.length() > 1)
 			lerMsg(msg);
 		delay(20);
+	// delay(5000);
+	// Desviar();
+	// motor->irParar();
 }
 
 void servo(int angulo) {
@@ -44,7 +39,6 @@ void servo(int angulo) {
   }
 }
 
-
 boolean Intervalo500() {
   static long time = millis();
   if ((int)(millis() - time) >= 500) {
@@ -53,7 +47,6 @@ boolean Intervalo500() {
   }
   return false;
 }
-
 
 boolean Intervalo20() {
   static long time = millis();
@@ -64,10 +57,8 @@ boolean Intervalo20() {
   return false;
 }
 
-
 // void chamarFuncao(int cod, int arg1 = 0, int arg2 = 0);
 void chamarFuncao(int cod, int arg1){
-
 	switch (cod) {
 	    case 1: motor->setVelocidade(arg1); break;
 		case 2: motor->setVelocidadeMotor1(arg1); break;
@@ -85,23 +76,16 @@ void chamarFuncao(int cod, int arg1){
 	    case 14: retornarDados(arg1, ult->getT_pin()); break;
 	    case 15: retornarDados(arg1, ult->getE_pin()); break;
 	    case 16: retornarDados(arg1, ult->getM_dist()); break;
-		case 17: 
-			retornarDados(arg1, (int)ult->lerDistancia());
-		break;  
-		case 18:
-			// Serial.print("delay: ");
-			Serial.println(arg1);
-			delay(arg1);
-		break;
-		case 19:
-			// Serial.println("ASDASDASDASDADs");
-			retornarDados(arg1, Encruzilhada());
-		break;
+		case 17: retornarDados(arg1, (int)ult->lerDistancia()); break;  
+		case 18: delay(arg1); break;
+		case 19: retornarDados(arg1, Encruzilhada()); break;
 		// case 20: servo->setPin(arg1); break;
 		// case 21: servo->getPin(); break;
 		case 22: Angulo = arg1; break;
-		case 666: retornarDados(arg1, 666);//funcão ok
-
+		case 23: retornarDados(arg1, EncruzilhadaInvertida()); break;
+		case 24: retornarDados(arg1, Desviar()); break;
+		
+		case 666: retornarDados(arg1, 666); break;//funcão ok
 	}
 }
 
@@ -111,6 +95,35 @@ int Encruzilhada(){
 	motor->irDireitaForte();
 	delay(1000);
 	motor->irFrente();
+	return 1;
+}
+
+int EncruzilhadaInvertida(){
+	// motor->irFrente();
+	// delay(1000);
+	motor->irEsquerdaForte();
+	delay(1100);
+	motor->irFrente();
+	return 1;
+}
+
+int Desviar(){
+	motor->irDireitaForte();
+	delay(1100);
+	motor->irFrente();
+	delay(3000);
+	motor->irEsquerdaForte();
+	delay(1500); 
+	motor->irFrente(); 
+	delay(4000);
+	motor->irEsquerdaForte();
+	delay(1100);
+	motor->irFrente();
+	delay(2300);
+	motor->irDireitaForte();
+	delay(500);
+	motor->irFrente();
+	motor->irParar();
 	return 1;
 }
 
@@ -125,19 +138,16 @@ void retornarDados(int id, int valor){
 
 	// Serial.println(msg);
 	// Serial.println("########################3");
-	blue->Enviar(msg);
+	blue->Enviar(msg);	
 }
-
 
 void lerMsg(String msg){
 	String SB, TB;
 	int iSB, iTB;
-
-	
+	Serial.println(msg);
 	int i;
 	switch (msg.charAt(0)) {
 	    case '1':
-	       
 	      break;
 	    case '2':
 	      break;
@@ -153,12 +163,9 @@ void lerMsg(String msg){
 	    			}
 	    		SB += msg.charAt(i);
 	    	}
-
 	    	iSB = SB.toInt();
 	    	iTB = TB.toInt();
-
 	    	chamarFuncao(iSB, iTB);
-	    
 	    break;
 	}
 }

@@ -1,99 +1,10 @@
-# Projeto de TCC grupo .PNG,the boys who are stick in the cat
-
-
-# Como usar Bitbucket:
-[Pode ser meio zuado de usar isso, mas de vdd, pode ajudar mt. Ele irá controlar todo nosso código, se dar algum problema sempre seŕa possível recuperar facilmente. Se duas pessoas editarem um memso codigo ao mesmo tempo, nem precisam trocar ideias, o git da conta de gerenciar e ver o que cada um fez e mesclar o código. O esforço vale a pena]
-
-Baixe e instale o Git here: http://git-scm.com/
-
-### Para baixar o fonte faça(somente na primeira vez que for utilizar):
-Abra o Prompt de comando do Git(sei lá como é o nome no Win, linux é só digitar git)
-Vá para a pasta que quer salvar o prj
-digite:
-    
-    git clone https://SeuNomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
-
-não esqueça de colocar seu nome de usuário do bitbucket no comando acima. Ele irá pedir senha, confirme para baixar.
-
-Ok, o código esta no seu PC.
-
-### Para manter as configurações do repositório remoto, digite:
-
-    
-    git remote add origin https://NomeDeUsuario@bitbucket.org/aron_bordin/robo-tcc.git
-
-## [Importante!!] Atualizar seus fontes
-Sempre que você for fazer algo no seu projeto, atualize seus fontes para não pegar código antigo sem perceber. Para isso, sempre antes de iniciar uma modificação digite:
-
-    git pull origin master
-
-Esse comando irá atualizar seus fontes.
-
-## [Tbm importante!!] Atualizar fontes servidor
-Sempre que terminar alguma modificação(n faça isso a cada save, espere grandes modificações, ou coisas importantes), você precisa enviar o que foi modificado para o server, então digite:
-
-    git add .
-
-Irá adicionar todos os arquivos da sua pasta para o servidor
-
-    git commit -am "Mensagem explicando o que voce fez"
-
-    git push origin master
-
-O commit salva suas mudanças e coloca uma msg informando o q vc fez. Tente sempre explicar com poucas palavras e claramente o q vc fez!!
-O git push faz o upload dos fontes.
-
-
-
-
-
-
-
-
-
-     .               ,.
-                  T."-._..---.._,-"/|
-                  l|"-.  _.v._   (" |
-                  [l /.'_ \; _~"-.`-t
-                  Y " _(o} _{o)._ ^.|
-                  j  T  ,-<v>-.  T  ]
-                  \  l ( /-^-\ ) !  !
-                   \. \.  "~"  ./  /c-..,__
-                     ^r- .._ .- .-"  `- .  ~"--.
-                      > \.                      \
-                      ]   ^.                     \
-                      3  .  ">            .       Y  -Que projeto sexy
-         ,.__.--._   _j   \ ~   .         ;       |
-        (    ~"-._~"^._\   ^.    ^._      I     . l
-         "-._ ___ ~"-,_7    .Z-._   7"   Y      ;  \        _
-            /"   "~-(r r  _/_--._~-/    /      /,.--^-._   / Y
-            "-._    '"~~~>-._~]>--^---./____,.^~        ^.^  !
-                ~--._    '   Y---.                        \./
-                     ~~--._  l_   )                        \
-                           ~-._~~~---._,____..---           \
-                               ~----"~       \
-                                              \
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Projeto de TCC grupo .PNG - Rescue A
 
 
 ## 1. Tema do Projeto:
 
 
-O projeto tem como objetivo proporcionar à FEB e ao CTI pesquisas nas áreas de robótica com o microcontrolador Arduino e análise de imagens com Android.
+O projeto tem como objetivo proporcionar à FEB e ao CTI na Unesp de Bauru, pesquisas nas áreas de robótica com o microcontrolador Arduino e análise de imagens com Android.
 
  
 ## 2. Situação Problema:
