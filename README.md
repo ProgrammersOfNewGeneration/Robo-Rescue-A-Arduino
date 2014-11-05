@@ -1,5 +1,6 @@
 # Projeto de TCC grupo .PNG - Rescue A
 
+![Rescue A](http://www.pngrobotica.tk/images/png_logo.png)
 
 ## 1. Tema do Projeto:
 
